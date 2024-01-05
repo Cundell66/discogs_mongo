@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ artist }} releases
+{% endblock %}
+{% block main %}
+    <h1> {{ artist }} Releases</h1>
+    <form action="/wiki" method="post" >
+        <input name="artist" type="hidden" value="{{ artist }}">
+        <input type="submit" value="Wiki Discography">
+    </form>
+    <div>
+        {% for release in releases %}
+            {% if not release['cover_image'].endswith("spacer.gif"): %}
+                    <img class="small_image" src={{ release['cover_image'] }} />
+                    <p>{{ release['title'] }} - {{ release['year']}} - {{release['country']}}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

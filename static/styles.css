@@ -1,0 +1,39 @@
+.image {
+    height: 300px;
+}
+
+.small_image {
+    width: 300px;
+}
+
+form {
+    display: inline-block;
+}
+
+.artist {
+    font-size: large;
+}
+
+.tracks {
+    text-align: left;
+}
+
+.first_row {
+    background-color: rgba(150, 212, 212, 0.4);
+}
+
+.delete_button {
+    background-color: red;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.artist_button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}

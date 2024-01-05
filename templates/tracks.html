@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block main %}
+    <table class="table table-bordered border-primary form" >
+        <th colspan="2"> {{ artist }} - {{ title }} </th>
+        <tr>
+            <td>
+                <img class="small_image" src={{ cover }} />
+            </td>
+            <td class="tracks">
+                {% for track in tracks %}
+                    <div>
+                        <form action="/lyrics" method="post">
+                            <input name="artist" type="hidden" value="{{ artist }}">
+                            <input name="title" type="hidden" value="{{ track['title'] }}">
+                            <button class="artist_button" type="submit">
+                                {{ track["position"]}} {{track["title"]}} {{track["duration"]}}
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}

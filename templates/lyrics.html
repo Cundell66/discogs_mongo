@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ artist }} - {{ title }}
+{% endblock %}
+{% block main %}
+    <h1> {{ artist }} - {{ title }}</h1>
+        {{content | safe}}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block main %}
+        <table class="table table-bordered border-primary form">
+            {% for album in albums %}
+                <tr border-bottom: 3px solid #000>
+                    <td rowspan = "6">
+
+                        <div>
+                            <form action="/wiki" method="post" >
+                                <input name="artist" type="hidden" value="{{ album.artist }}">
+                                <input class="artist_button" type="submit" value="Wiki Discography">
+                            </form>
+                        </div>
+                    </td>
+                <tr>
+                    <td  rowspan = "7"> <img class="small_image" src={{ album.cover_image }} /> </td>
+                    <th> Title </th>
+                    <th> Artist </th>
+                </tr>
+                <tr class="first_row">
+                    <td>
+                        <form action="/tracks" method="post">
+                            <input name="cover" type="hidden" value="{{ album.cover_image }}">
+                            <input name="master_id" type = "hidden" value="{{ album.master_id }}">
+                            <input name="artist" type = "hidden" value="{{ album.artist }}">
+                            <input name="title" type = "hidden" value="{{ album.title }}">
+                            <button class="artist_button" type="submit">{{ album.title }}</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/artist" method="post">
+                        <input name="artist_id" type = "hidden" value="{{ album.artist_id }}">
+                        <input name="artist" type = "hidden" value="{{ album.artist }}">
+                        <button class="artist_button" type="submit">{{ album.artist }}</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th> Year </th>
+                    <th> Description </th>
+                </tr>
+                <tr>
+                    <td>{{ album.year }}</td>
+                    <td>{{ album.description }}</td>
+                </tr>
+                <tr>
+                    <th> Genre </th>
+                    <th> Label </th>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="/delete" method="post">
+                            <input name="id" type="hidden" value="{{ album._id }}">
+                            <button class="delete_button" type="submit">Delete Album</button>
+                        </form>
+                    </td>
+                    <td>{{ album.genres }}</td>
+                    <td>{{ album.label }}</td>
+                </tr>
+                <tr border-bottom: 10px solid #000>
+
+                </tr>
+            </tr>
+
+            {% endfor %}
+        </table>
+{% endblock %}
