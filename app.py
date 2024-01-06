@@ -15,16 +15,15 @@ db = dbname["albums"]
 
 # import secrets from .env which is not on github
 app.config.from_pyfile("settings.py")
-
 discogsToken = os.environ.get("discogsToken")
-userName = os.environ.get("userName")
+discogsName = os.getenv("discogsName")
 folderID = os.environ.get("folderID")
 geniusToken = os.environ.get("geniusToken")
 
 totalItems = 355
 
 # set urls for required routes
-discogsURL = f"https://api.discogs.com/users/{userName}/collection/folders/{folderID}/releases?token={discogsToken}"
+discogsURL = f"https://api.discogs.com/users/{discogsName}/collection/folders/{folderID}/releases?token={discogsToken}"
 masterURL = "https://api.discogs.com/masters/"
 
 

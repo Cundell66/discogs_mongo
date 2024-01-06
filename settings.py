@@ -1,6 +1,6 @@
 from os import environ
 
-userName = environ.get("userName")
+discogsName = environ.get("discogsName")
 discogsToken = environ.get("discogsToken")
 folderID = environ.get("folderID")
 geniusToken = environ.get("geniusToken")
