@@ -5,7 +5,7 @@ from pymongo_get_database import get_database
 from bson.objectid import ObjectId
 import random
 from flask import Flask, render_template, request, redirect
-# from cs50 import SQL
+from covers import insert_image, show_images
 import requests
 
 app = Flask(__name__)
@@ -203,3 +203,27 @@ def wiki():
     artist = request.form.get("artist")
     url = f"https://www.wikipedia.com/wiki/{artist}_discography"
     return redirect(url)
+
+@app.route("/images", methods=["GET"])
+def add_images():
+    albums = db.find()
+    covers = dbname["covers"]
+    for album in albums:
+            existing_album = covers.count_documents({"release_id": album["release_id"]})
+            if existing_album == 0:
+                insert_image(album["release_id"], album["cover_image"])
+    return redirect("/")
+
+@app.route("/show", methods=["GET"])
+def showimages():
+    covers = dbname["covers"]
+    cover = covers.find_one()
+    img = show_images(cover)
+    print(img)
+    return render_template("cover.html", cover = img)
+
+def getimage(release_id):
+    covers = dbname["covers"]
+    cover = covers.find_one({"release_id": release_id})
+    img = show_images(cover)
+    return img
