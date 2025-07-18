@@ -20,7 +20,7 @@ discogsName = os.getenv("discogsName")
 folderID = os.environ.get("folderID")
 geniusToken = os.environ.get("geniusToken")
 
-totalItems = 355
+totalItems = 455
 
 # set urls for required routes
 discogsURL = f"https://api.discogs.com/users/{discogsName}/collection/folders/{folderID}/releases?token={discogsToken}"
