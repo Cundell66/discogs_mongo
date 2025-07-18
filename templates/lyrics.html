@@ -6,4 +6,10 @@
 {% block main %}
     <h1> {{ artist }} - {{ title }}</h1>
         {{content | safe}}
+    <p> Amend search? </p>    
+    <form action="/lyrics" method="post">
+        <input autocomplete="off" autofocus value="{{ artist }}" type="text" name="artist">
+        <input autocomplete="off" value="{{ title }}" type="text" name="title">
+        <button type="submit">Search</button>
+    </form>
 {% endblock %}
